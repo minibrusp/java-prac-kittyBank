@@ -5,9 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
-
-import javax.security.auth.login.LoginException;
 
 public class DataSource {
   public static Connection connect() {
@@ -75,33 +72,33 @@ public class DataSource {
   public static void main(String[] args) {
     // connect();
 
-    Scanner scanner = new Scanner(System.in);
+    // Scanner scanner = new Scanner(System.in);
 
-    String username = null;
-    String password = null;
+    // String username = null;
+    // String password = null;
 
-    System.out.println("Enter username");
-    username = scanner.next();
+    // System.out.println("Enter username");
+    // username = scanner.next();
 
-    System.out.println("Enter password");
-    password = scanner.next();
+    // System.out.println("Enter password");
+    // password = scanner.next();
 
-    Customer customer = null;
+    // Customer customer = null;
 
-    try {
-      customer = Authenticator.login(username, password);
-    } catch (LoginException e) {
-      System.out.println("There was an error: " + e.getMessage());
-    }
+    // try {
+    // customer = Authenticator.login(username, password);
+    // } catch (LoginException e) {
+    // System.out.println("There was an error: " + e.getMessage());
+    // }
 
-    if (customer != null && customer.isAuthenticated()) {
-      System.out.println(customer.getName());
+    // if (customer != null && customer.isAuthenticated()) {
+    // System.out.println(customer.getName());
 
-      Account account = getAccount(customer.getAccountId());
-      System.out.println(account.getBalance());
-    }
+    // Account account = getAccount(customer.getAccountId());
+    // System.out.println(account.getBalance());
+    // }
 
-    scanner.close();
+    // scanner.close();
 
     // Customer customer = getCustomer("twest8o@friendfeed.com");
     // Customer customer = getCustomer(username);
