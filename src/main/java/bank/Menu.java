@@ -4,11 +4,15 @@ import java.util.Scanner;
 
 import javax.security.auth.login.LoginException;
 
+import bank.exceptions.AmountException;
+
 public class Menu {
   private Scanner scanner;
 
   public static void main(String[] args) {
-    System.out.println("Mewwwwwwwww Meow to Kitty Bank");
+    System.out.println("\nMewwwwwwwww Meow to Kitty Bank");
+    System.out.println("\nSample Account username: twest8o@friendfeed.com pass: KyWrO9(HcR9 ");
+    System.out.println("or view resources bank.db w/ an sqlite viewer \n");
 
     Menu menu = new Menu();
     menu.scanner = new Scanner(System.in);
@@ -46,7 +50,7 @@ public class Menu {
     int selection = 0;
 
     while (selection != 4 && customer.isAuthenticated()) {
-      System.out.println("===============================================");
+      System.out.println("\n===============================================");
       System.out.println("Please select on of the following options: ");
       System.out.println("1: Deposit");
       System.out.println("2: Withdraw");
@@ -61,12 +65,22 @@ public class Menu {
         case 1:
           System.out.println("How much would you like to deposit?");
           amount = scanner.nextDouble();
-          account.deposit(amount);
+          try {
+            account.deposit(amount);
+          } catch (AmountException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Please trry again");
+          }
           break;
         case 2:
           System.out.println("How much would you like to withdraw");
           amount = scanner.nextDouble();
-          account.withdraw(amount);
+          try {
+            account.withdraw(amount);
+          } catch (AmountException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Please try again.");
+          }
           break;
         case 3:
           System.out.println("Current balance: " + account.getBalance());
@@ -74,6 +88,7 @@ public class Menu {
         case 4:
           Authenticator.logout(customer);
           System.out.println("Thanks for banking @ Kitty Bank! meeewwwwwwwww ~");
+          break;
         default:
           System.out.println("Invalid option. Please try again");
       }
